@@ -39,7 +39,7 @@ public class WebConfig implements WebMvcConfigurer{
         return templateEngine;
     }
 
-    @Override //че ето ваще не понятно 
+    @Override 
     public void configureViewResolvers(ViewResolverRegistry registry){
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
