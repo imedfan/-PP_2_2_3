@@ -1,5 +1,9 @@
 c:\Users\Home\dev\pp231\src\main\java\web\config\AppInit.java
+c:\Users\Home\dev\pp231\src\main\java\web\dao\UserDao.java
 c:\Users\Home\dev\pp231\src\main\java\web\controller\UserController.java
+c:\Users\Home\dev\pp231\src\main\java\web\dao\UserDaoImpl.java
 c:\Users\Home\dev\pp231\src\main\java\web\model\User.java
 c:\Users\Home\dev\pp231\src\main\java\web\config\WebConfig.java
 c:\Users\Home\dev\pp231\src\main\java\web\service\UserService.java
+c:\Users\Home\dev\pp231\src\main\java\web\config\HibernateConfig.java
+c:\Users\Home\dev\pp231\src\main\java\web\service\UserServiceImpl.java

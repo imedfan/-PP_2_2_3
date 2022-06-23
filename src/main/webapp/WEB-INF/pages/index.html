@@ -12,23 +12,52 @@
 </head>
 
 <body>
-    <div>
-        <h1>userList</h1>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Car</th>
-                <th>Family status</th>
-            </tr>
-            <tr th:each="lst : ${usersList}">
-                <td th:text="${lst.getName()}"></td>
-                <td th:text="${lst.getAge()}"></td>
-                <td th:text="${lst.getCar()}"></td>
-                <td th:text="${lst.isFamily()}"></td>
-            </tr>
-        </table>
-    </div>
+    <h3>UserList</h3>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Car</th>
+            <th>Family status</th>
+        </tr>
+
+            <th:block th:each="us : ${users}">
+                <td><th:block th:text="${us.getId()}"></th:block></td>
+                <td><th:block th:text="${us.getName()}"></th:block></td>
+                <td><th:block th:text="${us.getAge()}"></th:block></td>
+                <td><th:block th:text="${us.getCar()}"></th:block></td>
+                <td><th:block th:text="${us.isFamily()}"></th:block></td>
+                <td><th:block><a th:href="@{deleteUser(id=${us.getId()})}">deleteUser</a></th:block></td>
+                <td><th:block><a th:href="@{updateUser(id=${us.getId()})}">updateUser</a></th:block></td>
+            </th:block>"
+
+    </table>
+
+    <h3>addUSer</h3>
+
+    <form action="#" th:action="@{/addUser}" th:object="${user}"}>
+    <table>
+        <tr>
+            <th>name:</th>
+            <th><input type="text" th:field="*{name}"/></th>
+        </tr>
+        <tr>
+            <th>age:</th>
+            <th><input type="text" th:field="*{age}"/></th>
+        </tr>
+        <tr>
+            <th>car:</th>
+            <th><input type="text" th:field="*{car}" /></th>
+        </tr>
+        <tr>
+            <th>FS:</th>
+            <th><input type="text" th:field="*{family}" /></th>
+        </tr>
+    </table>
+        <p><input type="submit" value="ОК" /></p>
+    </form>
+
 </body>
 
 </html>
