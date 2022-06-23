@@ -34,7 +34,6 @@ public class UserDaoImpl implements UserDao {
         .setParameter("family", user.isFamily())
         .setParameter("id", user.getId())
         .executeUpdate();
-
     }
 
     @Override //TODO: походу хуйни нагородил
