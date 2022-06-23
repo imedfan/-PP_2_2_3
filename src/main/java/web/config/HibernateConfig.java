@@ -1,6 +1,5 @@
 package web.config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +13,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
-
 import javax.persistence.EntityManagerFactory;
 
 @Configuration
@@ -22,7 +20,7 @@ import javax.persistence.EntityManagerFactory;
 @EnableTransactionManagement
 @EnableJpaRepositories
 public class HibernateConfig {
-    private Properties hibernateProperties(){
+    private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MysqlDialect");
         properties.put("hibernate.show_sql", "true");
@@ -30,20 +28,20 @@ public class HibernateConfig {
         return properties;
     }
 
-    @Bean 
-    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory){
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
 
     @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
     @Bean
-    public DriverManagerDataSource dataSource(){  // TODO DataSource -> DriverManagerDataSource ?? 
+    public DriverManagerDataSource dataSource() { // TODO DataSource -> DriverManagerDataSource ??
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/kata?useSSL=false&serverTimezone=UTC");
@@ -53,7 +51,7 @@ public class HibernateConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(){
+    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
         localContainerEntityManagerFactoryBean.setPackagesToScan("web.model");
@@ -62,7 +60,5 @@ public class HibernateConfig {
         localContainerEntityManagerFactoryBean.afterPropertiesSet();
         return localContainerEntityManagerFactoryBean;
     }
-
-
 
 }
