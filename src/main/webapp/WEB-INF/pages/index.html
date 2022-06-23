@@ -1,62 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <style>
-        table th,
-        table td {
-            padding: 5px;
+        body{
+            text-align: center;
+            margin-left: 25%;
+            margin-right: 25%;
         }
+        div {
+            background: #fc3;
+            border: 2px solid black;
+            padding: 20px;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            width: max-content;
+            height: max-content;
+        }
+        .mainTable{
+            float:left;
+            display: inline-block; 
+            border: 1px solid blue;
+            margin: 2px;
+            margin-top: 15%;
+            margin-bottom: 15%;
+
+        }
+
+        .mainTable a {
+            color: rgb(0, 137, 155);
+        }
+
     </style>
-        <meta charset="UTF-8">
-        <title>UserList</title>
+    <meta charset="UTF-8">
+    <title>UserList</title>
 </head>
 
 <body>
-    <h3>UserList</h3>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Car</th>
-            <th>Family status</th>
-        </tr>
+    <div class="mainTable">
+        <h3>User List</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Car</th>
+                <th>Family status</th>
+            </tr>
 
             <th:block th:each="us : ${users}">
-                <td><th:block th:text="${us.getId()}"></th:block></td>
-                <td><th:block th:text="${us.getName()}"></th:block></td>
-                <td><th:block th:text="${us.getAge()}"></th:block></td>
-                <td><th:block th:text="${us.getCar()}"></th:block></td>
-                <td><th:block th:text="${us.isFamily()}"></th:block></td>
-                <td><th:block><a th:href="@{deleteUser(id=${us.getId()})}">deleteUser</a></th:block></td>
-                <td><th:block><a th:href="@{updateUser(id=${us.getId()})}">updateUser</a></th:block></td>
-            </th:block>"
+                <td>
+                    <th:block th:text="${us.getId()}"></th:block>
+                </td>
+                <td>
+                    <th:block th:text="${us.getName()}"></th:block>
+                </td>
+                <td>
+                    <th:block th:text="${us.getAge()}"></th:block>
+                </td>
+                <td>
+                    <th:block th:text="${us.getCar()}"></th:block>
+                </td>
+                <td>
+                    <th:block th:text="${us.isFamily()}"></th:block>
+                </td>
+                <td>
+                    <th:block><a th:href="@{deleteUser(id=${us.getId()})}">Delete user</a></th:block>
+                </td>
+                <td>
+                    <th:block><a th:href="@{updateUser(id=${us.getId()})}">Update user</a></th:block>
+                </td>
+            </th:block>
+        </table>
+    </div>
 
-    </table>
+    <div class="mainTable">
+        <h3>Add user</h3>
+        <form action="#" th:action="@{/addUser}" th:object="${user}" }>
+            <table border="1">
+                <tr>
+                    <th>Name:</th>
+                    <th><input type="text" th:field="*{name}" /></th>
+                </tr>
+                <tr>
+                    <th>Age:</th>
+                    <th><input type="text" th:field="*{age}" /></th>
+                </tr>
+                <tr>
+                    <th>Car:</th>
+                    <th><input type="text" th:field="*{car}" /></th>
+                </tr>
+                <tr>
+                    <th>Family status:</th>
+                    <th><input type="text" th:field="*{family}" /></th>
+                </tr>
+            </table>
 
-    <h3>addUSer</h3>
+            <p><input type="submit" value="OK" /></p>
 
-    <form action="#" th:action="@{/addUser}" th:object="${user}"}>
-    <table>
-        <tr>
-            <th>name:</th>
-            <th><input type="text" th:field="*{name}"/></th>
-        </tr>
-        <tr>
-            <th>age:</th>
-            <th><input type="text" th:field="*{age}"/></th>
-        </tr>
-        <tr>
-            <th>car:</th>
-            <th><input type="text" th:field="*{car}" /></th>
-        </tr>
-        <tr>
-            <th>FS:</th>
-            <th><input type="text" th:field="*{family}" /></th>
-        </tr>
-    </table>
-        <p><input type="submit" value="ОК" /></p>
-    </form>
+        </form>
+    </div>
+
+
 
 </body>
 
