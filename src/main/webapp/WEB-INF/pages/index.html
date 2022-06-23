@@ -1,7 +1,34 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table th,
+        table td {
+            padding: 5px;
+        }
+    </style>
+        <meta charset="UTF-8">
+        <title>UserList</title>
+</head>
+
 <body>
-<h2>
-    Message :${message}
-</h2>
+    <div>
+        <h1>userList</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Car</th>
+                <th>Family status</th>
+            </tr>
+            <tr th:each="lst : ${usersList}">
+                <td th:text="${lst.getName()}"></td>
+                <td th:text="${lst.getAge()}"></td>
+                <td th:text="${lst.getCar()}"></td>
+                <td th:text="${lst.isFamily()}"></td>
+            </tr>
+        </table>
+    </div>
 </body>
+
 </html>
