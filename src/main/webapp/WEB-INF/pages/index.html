@@ -3,11 +3,12 @@
 
 <head>
     <style>
-        body{
+        body {
             text-align: center;
             margin-left: 25%;
             margin-right: 25%;
         }
+
         div {
             background: #fc3;
             border: 2px solid black;
@@ -17,9 +18,10 @@
             width: max-content;
             height: max-content;
         }
-        .mainTable{
-            float:left;
-            display: inline-block; 
+
+        .mainTable {
+            float: left;
+            display: inline-block;
             border: 1px solid blue;
             margin: 2px;
             margin-top: 15%;
@@ -30,7 +32,6 @@
         .mainTable a {
             color: rgb(0, 137, 155);
         }
-
     </style>
     <meta charset="UTF-8">
     <title>UserList</title>
@@ -56,11 +57,11 @@
                 <td th:text="${us.getAge()}"></td>
                 <td th:text="${us.getCar()}"></td>
                 <td th:text="${us.isFamily()}"></td>
-                <td ><a th:href="@{deleteUser(id=${us.getId()})}">Delete user</a></td>
-                <td ><a th:href="@{updateUser(id=${us.getId()})}">Update user</a></td>
+                <td><a th:href="@{deleteUser(id=${us.getId()})}">Delete user</a></td>
+                <td><a th:href="@{updateUser(id=${us.getId()})}">Update user</a></td>
             </tr>
 
-            
+
         </table>
     </div>
 

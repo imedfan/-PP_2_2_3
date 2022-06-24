@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-    
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -27,24 +27,25 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user) {
         System.out.println(user.toString());
-        entityManager.createQuery("update User set name = :name, age = :age, car = :car, family = :family where id = :id")
-        .setParameter("name", user.getName())
-        .setParameter("age", user.getAge())
-        .setParameter("car", user.getCar())
-        .setParameter("family", user.isFamily())
-        .setParameter("id", user.getId())
-        .executeUpdate();
+        entityManager
+                .createQuery("update User set name = :name, age = :age, car = :car, family = :family where id = :id")
+                .setParameter("name", user.getName())
+                .setParameter("age", user.getAge())
+                .setParameter("car", user.getCar())
+                .setParameter("family", user.isFamily())
+                .setParameter("id", user.getId())
+                .executeUpdate();
     }
 
-    @Override //TODO: походу хуйни нагородил
+    @Override
     public List<User> getAllUsers() {
         return entityManager.createQuery("FROM User").getResultList();
     }
 
-    @Override 
+    @Override
     public User getUser(long id) {
-         User user = entityManager.find(User.class, (int) id);
-         return user;
+        User user = entityManager.find(User.class, (int) id);
+        return user;
     }
 
 }
